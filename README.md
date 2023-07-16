@@ -1,4 +1,4 @@
-# Go Commandline Publisher
+# gitfolder: ```github folders downloader tool```
 
 ![go-github release (latest SemVer)](https://img.shields.io/github/v/release/Niceblueman/gitfolder?sort=semver)
 
