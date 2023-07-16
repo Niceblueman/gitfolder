@@ -19,10 +19,11 @@ jobs:
                 cache-dependency-path: go.sum
             - name: Build
               run: go build -v -ldflags "-s -w" -o bin/gitfolder .
-            - name: Upload Go exec
+            - name: Release
               uses: softprops/action-gh-release@v1
+              if: startsWith(github.ref, 'refs/tags/')
               with:
-                name: gitfolder-${{matrix.os}}
-                path: ./bin/*
+                files: bin/gitfolder*
+                name: gitfolder-${{matrix.os}}-${{github.ref_name}}
               env:
                 GITHUB_TOKEN: ${{ secrets.MYTOKEN }}
