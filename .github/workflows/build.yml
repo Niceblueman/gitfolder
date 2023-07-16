@@ -1,0 +1,28 @@
+on:
+    push:
+      # Sequence of patterns matched against refs/tags
+      tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+name: Go Commandline publisher
+jobs:
+    build:
+        runs-on: [windows-latest, ubuntu-latest, macos-latest]
+        strategy:
+            matrix:
+                os: [linux, windows, macos]
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup Go
+              uses: actions/setup-go@v4
+              with:
+                go-version: "1.20.5"
+                cache-dependency-path: go.sum
+            - name: Build
+              run: go build -v -ldflags "-s -w" -o bin/gitfolder .
+            - name: Upload Go exec
+              uses: softprops/action-gh-release@v1
+              with:
+                name: gitfolder-${{matrix.os}}
+                path: ./bin/*
+              env:
+                GITHUB_TOKEN: ${{ secrets.MYTOKEN }}
