@@ -27,17 +27,11 @@ To use the Go Commandline Publisher, follow these steps:
    ```
 
    The tool will create a folder named `mains` and download the files inside that folder.
-
 ## Contributions
 
-We welcome contributions to the Go Commandline Publisher! If you find any issues or have ideas for improvements, feel free to create an issue or submit a pull request. Please follow the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md) for contributing.
+We welcome contributions to the Gitfolder ! If you find any issues or have ideas for improvements, feel free to create an issue or submit a pull request. Please follow the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md) for contributing.
 
-## Contributors
-
-We appreciate the efforts of all the contributors who have helped make the Go Commandline Publisher better. Special thanks to the following contributors:
-
-- John Doe (@johndoe)
-- Jane Smith (@janesmith)
+## Learn More
 
 ## Build Instructions
 
