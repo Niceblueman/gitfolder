@@ -9,7 +9,7 @@ jobs:
         strategy:
             matrix:
                 os: [windows-latest, ubuntu-latest, macos-latest]
-                name: [gitfolder.exe, gitfolder_linux, gitfolder_macos]
+                name: [gitfolder.exe, gitfolder-linux, gitfolder-macos]
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v3
