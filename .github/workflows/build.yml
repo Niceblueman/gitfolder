@@ -9,6 +9,7 @@ jobs:
         strategy:
             matrix:
                 os: [windows-latest, ubuntu-latest, macos-latest]
+                name: [gitfolder.exe, gitfolder_linux, gitfolder_macos]
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v3
@@ -18,12 +19,12 @@ jobs:
                 go-version: "1.20.5"
                 cache-dependency-path: go.sum
             - name: Build
-              run: go build -v -ldflags "-s -w" -o bin/gitfolder .
+              run: go build -v -ldflags "-s -w" -o bin/${{ matrix.name }} .
             - name: Release
               uses: softprops/action-gh-release@v1
               if: startsWith(github.ref, 'refs/tags/')
               with:
-                files: bin/gitfolder*
+                files: bin/${{ matrix.name }}
                 name: gitfolder-${{matrix.os}}-${{github.ref_name}}
               env:
                 GITHUB_TOKEN: ${{ secrets.MYTOKEN }}
